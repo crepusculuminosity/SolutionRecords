@@ -21,7 +21,9 @@ template <typename T> inline void read(T &x) {
 }
 
 int main() {
-  // freopen("data.in","r",stdin);
+  // freopen("data.in","r",stdin);int k=1;
+  // freopen("data.out","w",stdout);
+  // ll maxn=-1,minn=100;
   while (scanf("%d", &n) == 1) {
     sum = 0;
     for (int i = 1; i <= n; i++) {
@@ -36,7 +38,10 @@ int main() {
     ll cur = b[n / 2], ans = 0;
     for (int i = 0; i < n; i++)
       ans += abs(cur - b[i]);
+    // minn=min(ans,minn);
+    // maxn=max(ans,maxn);
     printf("%lld\n", ans);
   }
+  // printf("%lld %lld",minn,maxn);
   return 0;
 }

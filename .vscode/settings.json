@@ -81,5 +81,7 @@
         "ranges": "cpp",
         "span": "cpp",
         "stop_token": "cpp"
-    }
+    },
+    "editor.formatOnType": false,
+    "editor.acceptSuggestionOnEnter": "off"
 }
