@@ -22,8 +22,8 @@ void solve(int n) {
 }
 
 int main() {
-  solve(100000);
-  for (int i = 1; i <= 1000; i++)
+  solve(1000);
+  for (int i = 1; i <= 100; i++)
     cout << i << " " << num[i] << endl;
   return 0;
 }

@@ -47,7 +47,8 @@ int main() {
   while(q--) {
     int l=read(),r=read();
     ll t=(r-l+1)*(r-l)>>1;
-    if(t&1) ans^=1;
+    ans=(ans+(t%2))%2;
+    //if(ans) ans^=1;
     if(ans) puts("dislike");
     else puts("like");
   }

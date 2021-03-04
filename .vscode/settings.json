@@ -83,5 +83,11 @@
         "stop_token": "cpp"
     },
     "editor.formatOnType": false,
-    "editor.acceptSuggestionOnEnter": "off"
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.hover.delay": 100,
+    "clang.cxxflags": [
+        "-std=c++17"
+    ],
+    "clang.diagnostic.delay": 0
 }
