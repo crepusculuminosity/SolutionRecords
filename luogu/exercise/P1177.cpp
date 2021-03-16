@@ -25,6 +25,35 @@ inline int _getInt() {
 }
 } // namespace IStream
 
+namespace FstIO {
+constexpr int L = 1 << 15;
+char buffer[L], *S, *T;
+inline char gc() {
+  if (S == T) {
+    T = (S = buffer) + fread(buffer, 1, L, stdin);
+    if (S == T)
+      return EOF;
+  }
+  return *S++;
+}
+template <typename T, typename... Ts> inline void read(T &x, Ts &...t) {
+  x = 0;
+  T f = 1;
+  char c = gc();
+  while (!isdigit(c)) {
+    if (c == '-')
+      f = -1;
+    c = gc();
+  }
+  while (isdigit(c))
+    x = (x << 1) + (x << 3) + c - 48, c = gc();
+  x *= f;
+  if constexpr (sizeof...(t))
+    read(t...);
+}
+} // namespace FstIO
+using FstIO::read;
+
 inline void out(int x) {
   if (x > 9)
     out(x / 10);
@@ -69,10 +98,10 @@ void _qSort(int l, int r) {
 
 int main() {
   // freopen("")
-  n = IStream::_getInt();
+  read(n);
   for (int i = 1; i <= n; i++)
     // scanf("%d",&a[i]);
-    a[i] = IStream::_getInt();
+    read(a[i]);
   _qSort(1, n);
   // sort(a+1,a+1+n);
 

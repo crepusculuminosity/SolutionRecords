@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 namespace IStream {
-const int L = 1 << 15;
+constexpr int L = 1 << 30;
 char buffer[L], *S, *T;
 inline char _getChar() {
   if (S == T) {
@@ -46,6 +46,33 @@ void out(int x) {
   putchar(x % 10 + '0');
 }
 
+namespace FstIO {
+constexpr int L = 1 << 15;
+char buffer[L], *S, *T;
+inline char gc() {
+  if (S == T) {
+    T = (S = buffer) + fread(buffer, 1, L, stdin);
+    if (S == T)
+      return EOF;
+  }
+  return *S++;
+}
+template <typename T, typename... Ts> inline void read(T &x, Ts &...t) {
+  x = 0;
+  T f = 1;
+  char c = gc();
+  while (!isdigit(c)) {
+    if (c == '-')
+      f = -1;
+    c = gc();
+  }
+  while (isdigit(c))
+    x = (x << 1) + (x << 3) + c - 48, c = gc();
+  x *= f;
+  if constexpr (sizeof...(t))
+    read(t...);
+}
+} // namespace FstIO
 int main() {
   int a = IStream::_getInt();
   printf("%d\n", a);

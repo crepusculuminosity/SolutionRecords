@@ -85,7 +85,7 @@ void BigInteger::clean() {
     len--;
 }
 int main() {
-  std::ios::sync_with_stdio(false);
+  std::ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);
   BigInteger sum(0), tmp(1);
   int n;
   cin >> n;

@@ -80,7 +80,8 @@
         "numbers": "cpp",
         "ranges": "cpp",
         "span": "cpp",
-        "stop_token": "cpp"
+        "stop_token": "cpp",
+        "hash_map": "cpp"
     },
     "editor.formatOnType": false,
     "editor.acceptSuggestionOnEnter": "off",

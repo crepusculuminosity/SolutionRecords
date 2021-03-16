@@ -2,7 +2,7 @@
 using namespace std;
 typedef unsigned long long ull;
 ull base = 131;
-const ull mod = 212370440130137957ll;
+constexpr ull mod = 212370440130137957ll;
 ull a[10010];
 char s[10010];
 int n, ans = 1;
