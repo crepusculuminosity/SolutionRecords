@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
-#define re
 inline int read() {
-  re int t = 0;
-  re char v = getchar();
+  int t = 0;
+  char v = getchar();
   while (v < '0')
     v = getchar();
   while (v >= '0')
@@ -17,10 +16,10 @@ int main() {
   while (t--) {
     n = read(), m = read(), k = read();
     ans = 0;
-    for (re int i = 1; i <= n; ++i)
+    for (int i = 1; i <= n; ++i)
       a[i] = read();
-    for (re int i = 0; i <= k; ++i) {
-      for (re int j = 1; j <= n; ++j) {
+    for (int i = 0; i <= k; ++i) {
+      for (int j = 1; j <= n; ++j) {
         dp[j][i] = dp[j - 1][i] + a[j];
         // if(i&&j!=n)
         dp[j][i] = max(dp[j][i], dp[j + 1][i - 1] + a[j]);

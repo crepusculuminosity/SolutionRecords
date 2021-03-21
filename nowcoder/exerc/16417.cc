@@ -40,7 +40,7 @@ void merge(ll x, ll y) {
 ull dis(const node &a, const node &b) {
   return (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y) +
          (a.z - b.z) * (a.z - b.z);
-} // UOJ 上有一个test会爆long long
+} // UOJ 上最后一个点会爆long long
 
 int main() {
   // freopen("data.in", "r", stdin);

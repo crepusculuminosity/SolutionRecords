@@ -2,13 +2,11 @@
 using namespace std;
 constexpr int maxn = 1010;
 int fa[maxn], rnk[maxn];
-
 inline int find(int x) {
   if (fa[x] == x)
     return x;
   return fa[x] = find(fa[x]);
 }
-
 inline void merge(int x, int y) {
   x = find(x), y = find(y);
   if (x == y)
@@ -21,7 +19,6 @@ inline void merge(int x, int y) {
       ++rnk[x];
   }
 }
-
 int main() {
   // freopen("data.in", "r", stdin);
   ios::sync_with_stdio(false), cin.tie(0), cout.tie(0);

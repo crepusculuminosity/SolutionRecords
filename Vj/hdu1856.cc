@@ -15,12 +15,13 @@ inline int read() {
   return x;
 }
 inline void init() {
-  ans=1;//我真是sb，如果全部x==y，那么不会进行合并操作，只能输出1
+  ans = 1; //我真是sb，如果全部x==y，那么不会进行合并操作，只能输出1
   for (int i = 1; i < maxn; i++)
     fa[i] = i, rnk[i] = 1;
 }
 inline int find(int x) {
-  if(x==fa[x]) return x;
+  if (x == fa[x])
+    return x;
   return fa[x] = find(fa[x]);
 }
 inline void merge(int x, int y) {
@@ -36,7 +37,7 @@ inline void merge(int x, int y) {
   }
 }
 int main() {
-  //freopen("data.in", "r", stdin);
+  // freopen("data.in", "r", stdin);
   int n;
   while (~scanf("%d", &n)) {
     init();
