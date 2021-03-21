@@ -1,24 +1,29 @@
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <iostream>
+
 using namespace std;
 
-struct t {
-  int h, m, s;
-  bool operator<(const t &x) const {
-    if (h == x.h && m == x.m)
-      return s < x.s;
-    else if (h == x.h)
-      return m < x.m;
-    return h < x.h;
-  }
-} q[5010];
-
+int map[1005][1005];
 int main() {
-  int n;
-  cin >> n;
-  for (int i = 1; i <= n; i++)
-    cin >> q[i].h >> q[i].m >> q[i].s;
-  sort(q + 1, q + 1 + n);
-  for (int i = 1; i <= n; i++)
-    cout << q[i].h << " " << q[i].m << " " << q[i].s << endl;
-  return 0;
+  int n, m, k, x;
+  cin >> n >> m >> k;
+  getchar();
+  for (int i = 1; i <= n; i++) {
+    for (int j = 1; j <= m; j++) {
+      x = getchar() - 48;
+      map[i][j] = -map[i - 1][j - 1] + map[i - 1][j] + map[i][j - 1] + x;
+    }
+    getchar();
+  }
+  int cnt = 0;
+  for (int i = k; i <= n; i++) {
+    for (int j = k; j <= m; j++) {
+      if (map[i][j] - map[i - k][j] - map[i][j - k] + map[i - k][j - k]) {
+        cnt++;
+      }
+    }
+  }
+  cout << cnt << endl;
+  getchar();
+  getchar();
 }
