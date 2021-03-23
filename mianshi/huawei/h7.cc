@@ -2,6 +2,8 @@
 using namespace std;
 
 int main() {
-  cout << "here";
+  double x;
+  cin >> x;
+  cout << (int)(x + 0.5) - 1;
   return 0;
 }
