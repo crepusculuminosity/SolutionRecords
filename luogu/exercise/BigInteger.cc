@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int MAXN = 100005;
+constexpr int MAXN = 100005;
 class BigInteger {
 private:
   int val[MAXN];
