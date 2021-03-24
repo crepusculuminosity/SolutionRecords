@@ -1,7 +1,6 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
-const int maxn = 1010;
+constexpr int maxn = 1010;
 vector<int> G[maxn];
 int n, k;
 int ans[maxn];
