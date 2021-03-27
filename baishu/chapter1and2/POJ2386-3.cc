@@ -10,6 +10,7 @@ struct node {
 
 void bfs(int a, int b) {
   ++ans;
+  gh[a][b] = '.';
   queue<node> q;
   q.push(node{a, b});
   while (!q.empty()) {
@@ -64,7 +65,7 @@ int main() {
   for (int i = 1; i <= n; i++)
     for (int j = 1; j <= m; j++)
       if (gh[i][j] == 'W')
-        dfs(i, j);
+        bfs(i, j);
   cout << ans;
   return 0;
 }

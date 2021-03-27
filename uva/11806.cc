@@ -24,22 +24,14 @@ int main() {
     int ans = 0;
     for (int S = 0; S < (1 << 4); S++) {
       x = n, y = m, cnt = 0;
-      if (S & 1) {
-        cnt++;
-        x--;
-      }
-      if (S & 2) {
-        cnt++;
-        x--;
-      }
-      if (S & 4) {
-        cnt++;
-        y--;
-      }
-      if (S & 8) {
-        cnt++;
-        y--;
-      }
+      if (S & 1)
+        ++cnt, --x;
+      if (S & 2)
+        ++cnt, --x;
+      if (S & 4)
+        ++cnt, --y;
+      if (S & 8)
+        ++cnt, --y;
       if (cnt & 1)
         ans = (ans + mod - c[x * y][k]) % mod;
       else
