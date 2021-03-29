@@ -17,7 +17,7 @@ inline int dfs(int l, int r) {
 
 int main() {
   int _;
-  cin >> _;
+  scanf("%d", &_);
   while (_--) {
     scanf("%d", &n);
     memset(dp, 0, sizeof(dp));
