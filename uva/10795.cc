@@ -3,7 +3,7 @@ using namespace std;
 typedef long long ll;
 const int MAXN = 70;
 int n, start[MAXN], finish[MAXN], kase;
-
+//假了
 ll f(int *p, int i, int end) {
   if (i == 0)
     return 0;
