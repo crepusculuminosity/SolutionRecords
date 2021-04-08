@@ -1,12 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
-constexpr int maxn=1e8;
+constexpr int maxn = 1e5;
 int main() {
-  freopen("data.in","w",stdout);
+  freopen("data.in", "w", stdout);
   srand((unsigned)time(NULL));
-  for(int i=1;i<=20;i++)
-    cout<<(rand()%maxn)+1<<endl;
-  for(int i=1;i<=100;i++)
-    cout<<(rand()%maxn)+1+maxn<<endl;
+  for (int i = 1; i <= maxn; i++)
+    cout << rand() % 10;
   return 0;
 }
