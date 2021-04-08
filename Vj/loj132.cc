@@ -55,8 +55,8 @@ int main() {
     a[i] = x - now;
     now = x;
     /* ll x=read();
- update(i,x-now);
- now=x;*/
+update(i,x-now);
+now=x;*/
   }
   init();
   // for(int i=1;i<=n;i++) printf("%lld ",tr2[i]);

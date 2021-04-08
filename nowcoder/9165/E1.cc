@@ -8,7 +8,6 @@ Poi niu, zhi;
 ll dis(Poi a, Poi b) { return abs(a.x - b.x) + abs(a.y - b.y); }
 double mind = 3.0e8;
 int main() {
-
   ll n;
   scanf("%lld", &n);
   for (ll i = 1; i <= n; i++) {

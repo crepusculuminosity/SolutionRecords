@@ -1,10 +1,11 @@
 #include <bits/stdc++.h>
+
+#include <ctime>
 using namespace std;
 constexpr int MAXN = 100005;
 constexpr int mod = 1e9 + 7;
-using ll=long long;
+using ll = long long;
 class BigInteger {
-
 public:
   int val[MAXN];
   int len;
@@ -122,15 +123,16 @@ void BigInteger::clean() {
     --len;
 }
 
-int getmo(BigInteger & a) {
-  ll res=0,len=a.len;
-  for(int i=len;i>=1;i--) {
-    res=(res*10+a.val[i])%mod;
+int getmo(BigInteger &a) {
+  ll res = 0, len = a.len;
+  for (int i = len; i >= 1; i--) {
+    res = (res * 10 + a.val[i]) % mod;
   }
   return res;
 }
 int main() {
-  // freopen("data.in", "r", stdin);
+  freopen("data.in", "r", stdin);
+  clock_t s = clock();
   ios::sync_with_stdio(false);
   cin.tie(nullptr), cout.tie(nullptr);
   BigInteger n;
@@ -150,6 +152,8 @@ int main() {
     n = n / 10;
   }
   // minus1(ans);
-  cout << getmo(ans);
+  cout << getmo(ans) << '\n';
+  clock_t e = clock();
+  cout << (double)(e - s) / CLOCKS_PER_SEC;
   return 0;
 }

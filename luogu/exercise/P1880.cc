@@ -5,7 +5,6 @@ int sum[220], a[220];
 constexpr int maxn = 0x7fffffff;
 
 int dfs(int o, int i, int j) {
-
   if (dp[o][i][j])
     return dp[o][i][j];
   if (j == i)

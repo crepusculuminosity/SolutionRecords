@@ -44,7 +44,6 @@ struct quest {
 } q[5010];
 
 int main() {
-
   n = read(), h = read();
   for (int i = 1; i <= h; i++)
     q[i].b = read(), q[i].e = read(), q[i].t = read();

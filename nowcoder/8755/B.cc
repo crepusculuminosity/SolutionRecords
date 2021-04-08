@@ -44,8 +44,8 @@ int main() {
   ll n = read(), k = read();
   ll x;
   /*for(int i=1;i<=n;++i) {
-    x=read();
-    a.insert(x);
+  x=read();
+  a.insert(x);
 }*/
 
   ll ans = work(n, k);

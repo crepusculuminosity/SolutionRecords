@@ -48,7 +48,6 @@ int main() {
   int _;
   scanf("%d", &_);
   while (_--) {
-
     scanf("%lld%lld%lld", &n, &h, &r);
     init();
     ll tot1 = 0, tot2 = 0;

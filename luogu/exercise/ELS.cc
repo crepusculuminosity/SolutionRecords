@@ -16,7 +16,7 @@ void solve(int n) {
         break;
     }
     /*for(int j=2;i*j<=n;j++)
-    num[i*j]=0; */
+num[i*j]=0; */
   }
   return;
 }

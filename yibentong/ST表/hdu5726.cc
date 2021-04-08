@@ -15,7 +15,7 @@ void pre() {
 
 void stinit() {
   for (int j = 1; j <= 18; j++) {
-    for (int i = 1; i + (1 << j) -1 <= n; i++)
+    for (int i = 1; i + (1 << j) - 1 <= n; i++)
       st[i][j] = __gcd(st[i][j - 1], st[i + (1 << (j - 1))][j - 1]);
   }
 }
@@ -49,8 +49,8 @@ void solve() {
 int main() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr), cout.tie(nullptr);
-   freopen("data.in", "r", stdin);
-   freopen("data.out", "w", stdout);
+  freopen("data.in", "r", stdin);
+  freopen("data.out", "w", stdout);
   int kse = 1;
   pre();
   int _;

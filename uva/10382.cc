@@ -14,7 +14,6 @@ int main() {
   // freopen("data.in", "r", stdin);
   // int _; cin>>_;
   while (~scanf("%d%d%d", &n, &l, &w)) {
-
     int cnt = 0;
     for (int i = 1; i <= n; i++) {
       // cin>>x>>r;

@@ -6,8 +6,8 @@ ui a[maxn];
 // ui b[maxn];
 
 int main() {
-  freopen("data.in","r",stdin);
-  freopen("data.out","w",stdout);
+  freopen("data.in", "r", stdin);
+  freopen("data.out", "w", stdout);
   a[1] = a[0] = 1;
   string str;
   // b[1] = 1;

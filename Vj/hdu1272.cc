@@ -62,8 +62,8 @@ int main() {
         merge(n, m), vis[n] = vis[m] = 1;
     }
     /*for(int i = 1; i < maxn; i++)
-      if(vis[i]) cout<<find(i)<<' ';
-    cout<<endl;*/
+  if(vis[i]) cout<<find(i)<<' ';
+cout<<endl;*/
     if (f) {
       for (int i = 1; i < maxn; i++)
         if (vis[i])

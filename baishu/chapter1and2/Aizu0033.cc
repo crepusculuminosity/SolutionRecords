@@ -15,8 +15,8 @@ void dfs(int x, int y, int cnt) {
     dfs(x, a[cnt], cnt);
 
   /*if(a[cnt]>x&&a[cnt]>y) {
-    dfs(a[cnt],y,cnt);
-    dfs(x,a[cnt],cnt);
+  dfs(a[cnt],y,cnt);
+  dfs(x,a[cnt],cnt);
 }
 if(a[cnt]>x&&a[cnt]<y) dfs(a[cnt],y,cnt);
 if(a[cnt]<x&&a[cnt]>y) dfs(x,a[cnt],cnt);*/

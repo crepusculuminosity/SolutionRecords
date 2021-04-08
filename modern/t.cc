@@ -71,11 +71,11 @@ int main() {
     for (int i = 1; i <= n; i++)
       cout << num[i] << " " << l[i] << " " << r[i] << endl;
     /*stinit();
-    while (m--) {
-      int l = read(), r = read();
-      printf("%d\n", query(l, r));
-    }
-  }*/
+while (m--) {
+  int l = read(), r = read();
+  printf("%d\n", query(l, r));
+}
+}*/
   }
   return 0;
 }

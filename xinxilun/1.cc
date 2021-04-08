@@ -23,7 +23,8 @@ void work() {
   cout << fixed << setprecision(8) << -en << '\n';
 }
 
-int main() {
+int main(int argc, char **argv) {
+  vector<string> arg(argv, argv + argc);
   fd = fopen("./data1.in", "r"); // Robinson
   if (fd == NULL)
     cout << "failed\n";

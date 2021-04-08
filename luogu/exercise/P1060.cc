@@ -24,11 +24,11 @@ int main() {
     w[i] = read(), v[i] = read();
 
   /*for(int i=1;i<=m;i++) {
-    for(int j=1;j<=n;j++) {
-      dp[i][j]=dp[i - 1][j];
-      if(j>=w[i]) dp[i][j]=max(dp[i][j],dp[i-1][j-w[i]]+w[i]*v[i]);
-    }
-  }*/
+  for(int j=1;j<=n;j++) {
+    dp[i][j]=dp[i - 1][j];
+    if(j>=w[i]) dp[i][j]=max(dp[i][j],dp[i-1][j-w[i]]+w[i]*v[i]);
+  }
+}*/
 
   for (int i = 1; i <= m; i++) {
     for (int j = n; j >= w[i]; j--) {

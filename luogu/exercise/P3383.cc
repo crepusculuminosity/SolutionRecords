@@ -20,7 +20,6 @@ inline int read() {
 }
 
 void solve(int n) {
-
   num[1] = 0;
   for (int i = 2; i <= n; i++) {
     if (num[i] == 0)
@@ -31,7 +30,7 @@ void solve(int n) {
         break;
     }
     /*for(int j=2;i*j<=n;j++)
-        num[i*j]=0; */
+    num[i*j]=0; */
   }
   return;
 }

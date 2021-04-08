@@ -23,13 +23,13 @@ inline int _getInt() {
   return re;
   /*ch=_getChar();
 while (ch<'0'||ch>'9') {
-    if(ch=='-') f=-1;
-    ch=_getChar();
+  if(ch=='-') f=-1;
+  ch=_getChar();
 
 }
 while (ch>='0'&&ch<='9') {
-    re=(re<<1)+(re<<3)+ch-'0';
-    ch=_getChar();
+  re=(re<<1)+(re<<3)+ch-'0';
+  ch=_getChar();
 }
 return re*f;*/
 }

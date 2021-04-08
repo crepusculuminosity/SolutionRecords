@@ -6,8 +6,8 @@ int a[30][30];
 int n;
 
 int main() {
-  //freopen("data.in", "r", stdin);
-  //freopen("data.out", "w", stdout);
+  // freopen("data.in", "r", stdin);
+  // freopen("data.out", "w", stdout);
   memset(dp, 0x3f, sizeof(dp));
   int n;
   cin >> n;
