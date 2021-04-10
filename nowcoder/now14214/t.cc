@@ -131,7 +131,8 @@ int getmo(BigInteger &a) {
   return res;
 }
 int main() {
-  freopen("data.in", "r", stdin);
+  // freopen("data.in", "r", stdin);
+  // freopen("data.out", "w", stdout);
   clock_t s = clock();
   ios::sync_with_stdio(false);
   cin.tie(nullptr), cout.tie(nullptr);

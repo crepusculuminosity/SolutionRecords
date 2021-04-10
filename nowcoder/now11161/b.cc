@@ -2,6 +2,7 @@
 using namespace std;
 constexpr int maxn = 1e6 + 7;
 using ll = long long;
+const char * fin="data.in";
 constexpr ll mod = 1e9 + 7;
 ll n;
 ll a[maxn], b[maxn];
