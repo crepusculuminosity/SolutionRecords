@@ -6,4 +6,6 @@
 !*.hpp
 !Makefile
 !*/
-!.gitkeep
+.gitkeep
+.gitignore
+!*/bin/
