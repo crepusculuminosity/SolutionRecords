@@ -1,9 +1,9 @@
 *
-
+!*/uva
 !*.cc
 !*.cpp
 !*.h
 !*.hpp
 !Makefile
-
+!*/
 !.gitkeep
