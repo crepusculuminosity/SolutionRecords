@@ -50,11 +50,15 @@ inline ll query(ll x) {
 }
 
 int main() {
-  // freopen("data.in","r",stdin);
+  freopen("data1.in","r",stdin);
+  freopen("data2.out","w",stdout);
   n = read(), m = read();
   for (int i = 1; i <= n; i++)
     a[i] = read();
   init();
+  for(int i=1;i<=n;i++)
+    cout<<b[i]<<' ';
+  cout<<endl;
   for (int i = 1; i <= m; i++) {
     int k = read(), x = read(), y = read();
     // int k,x,y; cin>>k>>x>>y;
@@ -63,5 +67,6 @@ int main() {
     if (k == 2)
       printf("%lld\n", query(y) - query(x - 1));
   }
+  system("pause");
   return 0;
 }

@@ -1,34 +1,13 @@
 #include <bits/stdc++.h>
-#include <sys/mman.h>
-#include <sys/types.h>
-#include <unistd.h>
 #define lb(x) ((x) & (-x))
 using namespace std;
 constexpr int maxn = 1e6 + 10;
 using ll = long long;
 vector<int> G[maxn];
-int a[maxn * 2][2];
-int vis[maxn], val[maxn];
+int a[maxn * 2][2], vis[maxn], val[maxn], rec[maxn][2];
 int cnt, n, m, k;
 ll tr[maxn * 2];
-int rec[maxn][2];
-char *p;
-
-template <typename T, typename... Ts> inline void read(T &x, Ts &... y) {
-  x = 0;
-  T f = 1;
-  char ch = *p++;
-  while (ch < '0' || ch > '9') {
-    if (ch == '-')
-      f = -1;
-  }
-  while (ch >= '0' && ch <= '9')
-    x = x * 10 + ch - 48, ch = *p++;
-  x *= f;
-  if constexpr ((bool)sizeof...(y))
-    read(y...);
-}
-
+//这题卡快读，应该是数据中间有很多空格
 void dfs(int x) {
   vis[x] = 1;
   a[++cnt][0] = x;
@@ -80,18 +59,17 @@ ll query(ll x) {
 }
 
 int main() {
-  p = (char *)mmap(NULL, lseek(0, 0, SEEK_END), PROT_READ, MAP_PRIVATE, 0, 0);
-  //freopen("data.in", "r", stdin);
-  //freopen("data.out", "w", stdout);
-  // cin >> n >> m >> k;
-  read(n, m, k);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  cout.tie(nullptr);
+  // freopen("data.in", "r", stdin);
+  // freopen("data.out", "w", stdout);
+  cin >> n >> m >> k;
   for (int i = 1; i <= n; i++)
-    // cin >> val[i];
-    read(val[i]);
+    cin >> val[i];
   for (int i = 1; i <= n - 1; i++) {
     int u, v;
-    // cin >> u >> v;
-    read(u, v);
+    cin >> u >> v;
     G[u].emplace_back(v);
     G[v].emplace_back(u);
   }
@@ -99,17 +77,14 @@ int main() {
   bitinit();
   while (m--) {
     int o;
-    // cin >> o;
-    read(o);
+    cin >> o;
     if (o == 1) {
       int a, b;
-      // cin >> a >> b;
-      read(a, b);
+      cin >> a >> b;
       update(a, b);
     } else {
       int a;
-      // cin >> a;
-      read(a);
+      cin >> a;
       cout << query(a) / 2 << '\n';
     }
   }
