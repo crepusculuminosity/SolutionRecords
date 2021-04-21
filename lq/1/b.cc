@@ -15,7 +15,6 @@ int dfs(int x) {
 }
 int main() {
   memset(dp,-1,sizeof(dp));
-  for(int i=1;i<=10;i++)
-    cout<<dfs(i)<<endl;
+  cout<<dfs(10);
   return 0;
 }
