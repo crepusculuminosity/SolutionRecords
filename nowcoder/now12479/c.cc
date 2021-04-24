@@ -22,5 +22,6 @@ int main() {
     cin >> x;
     m |= x;
   }
-  printf("%lld", ksm(2, n - 1) * m % mod);
+  // printf("%lld", ksm(2, n - 1) * m % mod);
+  cout << ksm(2, n - 1) * m % mod;
 }

@@ -1,53 +1,38 @@
 #include <bits/stdc++.h>
 using namespace std;
-const int MAXN = 1e6 + 5;
-int a[MAXN];
-int m, n;
-typedef long long ll;
-
-inline int read() {
-  int x = 0, f = 1; //
-  char ch = getchar();
-  while (ch > '9' || ch < '0') {
-    if (ch == '-')
-      f = -1;
-    ch = getchar();
-  }
-  while (ch <= '9' && ch >= '0') {
-    x = x * 10 + ch - '0';
-    ch = getchar();
-  }
-  return x * f;
-}
-
-struct Base {
+int n, m;
+constexpr int maxn = 1e6 + 10;
+int a[maxn], b[maxn], v[maxn];
+struct node {
   int d, v;
-  bool operator<(const Base a) const { return v > a.v; }
-} base[MAXN];
-
-ll ans;
-
+  bool operator<(const node &x) const { return v > x.v; }
+} e[maxn];
+bool cmp(int x, int y) { return x > y; }
 int main() {
-  n = read();
-  m = read();
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  cout.tie(nullptr);
+  // freopen("data.in", "r", stdin);
+  // freopen("data.out", "w", stdout);
+  cin >> n >> m;
   for (int i = 1; i <= n; i++)
-    a[i] = read();
+    cin >> a[i];
   for (int i = 1; i <= m; i++)
-    base[i].d = read();
+    cin >> e[i].d;
   for (int i = 1; i <= m; i++)
-    base[i].v = read();
+    cin >> e[i].v;
 
-  // sort(a+1,a+n+1,cmp);
-  sort(base + 1, base + m + 1);
-  int mx = 0, p = 1;
+  sort(a + 1, a + 1 + n, cmp);
+  sort(e + 1, e + 1 + m);
+
+  int now = 1, ans = 0;
   for (int i = 1; i <= n; i++) {
-    while (a[i] > base[p].d && p <= m) {
-      mx = max(base[p].v, mx);
-      p++;
-    }
-    ans += mx;
+    while (e[now].d >= a[i])
+      ++now;
+    if (e[now].v < 0)
+      break;
+    ans += e[now].v;
   }
-  cout << ans << endl;
-
+  cout << ans;
   return 0;
 }

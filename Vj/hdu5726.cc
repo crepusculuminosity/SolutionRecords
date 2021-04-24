@@ -5,7 +5,7 @@ using ll = long long;
 int st[maxn][20];
 int n, m, a[maxn];
 int Logn[maxn];
-map<int, ll> mp;
+unordered_map<int, ll> mp;
 
 void pre() {
   Logn[1] = 0, Logn[2] = 1;
