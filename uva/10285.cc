@@ -46,17 +46,14 @@ void print(int x, int y) {
     print(sx, sy);
 }
 int main() {
-  //freopen("data.in", "r", stdin);
-  //freopen("data.out", "w", stdout);
+  freopen("data.in", "r", stdin);
+  freopen("data.out","w",stdout);
   ios::sync_with_stdio(false);
   cout.tie(nullptr), cout.tie(nullptr);
   int _;
-  int f = 0;
   cin >> _;
   char str[20];
   while (_--) {
-    if (f++ > 0)
-      cout << '\n';
     cnt = 0;
     memset(dp, -1, sizeof(dp));
     cin >> str >> n >> m;
@@ -73,7 +70,7 @@ int main() {
       }
     cout << str << ": " << ans << '\n';
     print(sx, sy);
-    // cout << '\n';
+    cout << '\n';
   }
   return 0;
 }
