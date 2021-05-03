@@ -1,18 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
-constexpr int maxn = 1010;
-int a[maxn];
-int t, s, n;
 
 int main() {
-  cin >> t >> s >> n;
-  for (int i = 0; i < n; i++)
-    cin >> a[i];
-  int u = 0, l = s;
-  for (int i = 0; i < t; i++) {
-    if (a[i]) swap(u, l);
-    if (u) --u, ++l;
+  int n, m;
+  cin >> n >> m;
+
+  vector<string> a(n);
+  for (string &s : a)
+    cin >> s;
+
+  int best = m, bi = -1, bj = -1;
+  vector<int> pos(n - 1, m);
+  for (int i = m - 1; i >= 0; i--) {
+    for (int k = 0; k + 1 < n; k++) {
+      if (a[k][i] < a[k + 1][i])
+        pos[k] = i;
+      if (a[k][i] > a[k + 1][i])
+        pos[k] = m;
+    }
+    int j = *max_element(begin(pos), end(pos));
+    if (j < m && j - i < best)
+      best = j - i, bi = i, bj = j;
   }
-  cout << u;
-  return 0;
+  cout << bi + 1 << " " << bj + 1;
 }
