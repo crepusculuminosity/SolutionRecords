@@ -16,7 +16,7 @@ void bfs() {
       if (vis[G[u][i]]) continue;
       d[G[u][i]] = d[u] + 2;
       q.push(G[u][i]);
-      // vis[G[u][i]] = 1;
+      vis[G[u][i]] = 1;
     }
   }
 }
