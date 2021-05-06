@@ -16,9 +16,10 @@ void exgcd(ll a, ll b, ll &d, ll &x, ll &y) {
 }
 
 int main() {
-  scanf("%d%d%d%d%d", &m, &n, &p, &q, &l);
+  scanf("%lld%lld%lld%lld%lld", &m, &n, &p, &q, &l);
   exgcd(l, q - p, d, x, y);
-  d = abs(d);
+  if (d < 0)
+    d = -d;
   // printf("%ld %ld %ld",x,y,d);
   if ((m - n) % d || m == n) {
     printf("Impossible\n");

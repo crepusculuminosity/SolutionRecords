@@ -2,8 +2,8 @@
 #include <ios>
 using namespace std;
 int n, m;
-constexpr int maxn=5e4+10;
-constexpr int maxm=2e5+10;
+constexpr int maxn = 5e4 + 10;
+constexpr int maxm = 2e5 + 10;
 int fa[maxn], rnk[maxn];
 const int INF = 0x3f3f3f3f;
 struct edge {
@@ -57,10 +57,10 @@ int main() {
   }
   sort(es + 1, es + 1 + m);
   int ans = 0x3f3f3f3f;
-  for (int l = 1; l <= m; l++) 
+  for (int l = 1; l <= m; l++)
     // cout<<kruskal(l)<<endl;
     ans = min(ans, kruskal(l));
-  
+
   cout << ans;
 
   return 0;

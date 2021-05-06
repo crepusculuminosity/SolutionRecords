@@ -17,7 +17,8 @@ void floyd() {
 
 int main() {
   ios::sync_with_stdio(false);
-  cin.tie(0); cout.tie(0);
+  cin.tie(0);
+  cout.tie(0);
   cin >> n >> m;
   memset(dp, 0x3f, sizeof(dp));
   for (int i = 1; i <= m; i++) {

@@ -40,8 +40,8 @@ void dfs(int x) {
 }
 
 int main() {
-  //freopen("data.in", "r", stdin);
-  //freopen("data.out", "w", stdout);
+  // freopen("data.in", "r", stdin);
+  // freopen("data.out", "w", stdout);
   scanf("%s", a + 1);
   n = strlen(a + 1);
   scanf("%s", b + 1);

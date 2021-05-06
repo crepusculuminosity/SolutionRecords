@@ -12,9 +12,10 @@ int main() {
       cout << "Wrong Answer\n";
     else {
       int x = a, y = b - a - 1, z = str.size() - b - 1;
-      if (z==x*y)
-        cout<<"Accepted\n";
-      else cout<<"Wrong Answer\n";
+      if (z == x * y)
+        cout << "Accepted\n";
+      else
+        cout << "Wrong Answer\n";
     }
   }
   return 0;

@@ -22,8 +22,8 @@ int dfs(int x, int y) {
 }
 
 int main() {
- //freopen("data.in", "r", stdin);
-  //freopen("data.out", "w", stdout);
+  // freopen("data.in", "r", stdin);
+  // freopen("data.out", "w", stdout);
   cin >> n >> m;
   for (int i = 1; i <= n; i++)
     for (int j = 1; j <= m; j++)

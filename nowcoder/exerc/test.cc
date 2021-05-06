@@ -14,7 +14,7 @@ ll tr[maxn * 2];
 int rec[maxn][2];
 char *p;
 
-template <typename T, typename... Ts> inline void read(T &x, Ts &... y) {
+template <typename T, typename... Ts> inline void read(T &x, Ts &...y) {
   x = 0;
   T f = 1;
   char ch = *p++;
@@ -81,8 +81,8 @@ ll query(ll x) {
 
 int main() {
   p = (char *)mmap(NULL, lseek(0, 0, SEEK_END), PROT_READ, MAP_PRIVATE, 0, 0);
-  //freopen("data.in", "r", stdin);
-  //freopen("data.out", "w", stdout);
+  // freopen("data.in", "r", stdin);
+  // freopen("data.out", "w", stdout);
   // cin >> n >> m >> k;
   read(n, m, k);
   for (int i = 1; i <= n; i++)

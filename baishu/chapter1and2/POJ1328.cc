@@ -13,7 +13,7 @@ struct node {
 int n, d;
 
 int main() {
-   freopen("data.in", "r", stdin);
+  freopen("data.in", "r", stdin);
   ios::sync_with_stdio(false);
   cin.tie(0);
   cout.tie(0);

@@ -41,15 +41,17 @@ void dijkstra(int o) {
 }
 
 int main() {
-  //freopen("data.in", "r", stdin);
-  ios::sync_with_stdio(false);
-  cin.tie(0);
-  cout.tie(0);
+  // freopen("data.in", "r", stdin);
+  // ios::sync_with_stdio(false);
+  // cin.tie(0);
+  // cout.tie(0);
   memset(d, 0x3f, sizeof(d));
-  cin >> n >> m >> s;
+  // cin >> n >> m >> s;
+  scanf("%d%d%d", &n, &m, &s);
   while (m--) {
     int u, v, w;
-    cin >> u >> v >> w;
+    // cin >> u >> v >> w;
+    scanf("%d%d%d", &u, &v, &w);
     G[0][u].push_back(node{v, w});
     G[1][v].push_back(node{u, w});
   }
@@ -58,6 +60,7 @@ int main() {
   int sum = 0;
   for (int i = 1; i <= n; i++)
     sum = max(sum, d[0][i] + d[1][i]);
-  cout << sum;
+  // cout << sum;
+  printf("%d", sum);
   return 0;
 }

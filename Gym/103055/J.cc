@@ -8,12 +8,13 @@ void bfs() {
   d[1] = 0;
   queue<int> q;
   q.push(1);
-  vis[1]=1;
+  vis[1] = 1;
   while (!q.empty()) {
     int u = q.front();
     q.pop();
     for (int i = 0; i < G[u].size(); i++) {
-      if (vis[G[u][i]]) continue;
+      if (vis[G[u][i]])
+        continue;
       d[G[u][i]] = d[u] + 2;
       q.push(G[u][i]);
       vis[G[u][i]] = 1;
@@ -24,8 +25,8 @@ int main() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
   cout.tie(nullptr);
-  //freopen("data.in", "r", stdin);
-  //freopen("data.out", "w", stdout);
+  // freopen("data.in", "r", stdin);
+  // freopen("data.out", "w", stdout);
   cin >> n >> m >> T;
   for (int i = 2; i <= n; i++)
     cin >> a[i];

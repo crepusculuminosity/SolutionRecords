@@ -21,6 +21,6 @@ int main() {
           if (i == k && j == l)
             f[i][j][k][l] -= a[i][j];
         }
-  cout<<f[n][n][n][n];
+  cout << f[n][n][n][n];
   return 0;
 }

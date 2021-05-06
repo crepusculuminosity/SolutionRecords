@@ -56,7 +56,7 @@ void dijkstra(int o) {
 }
 
 int main() {
-  //freopen("data.in","r",stdin);
+  // freopen("data.in","r",stdin);
   read(n), read(m);
   ll ans = 0;
   for (int i = 1; i <= m; i++) {
@@ -71,7 +71,7 @@ int main() {
   dijkstra(1);
   for (int i = 1; i <= n; i++)
     ans += d[i];
-  printf("%lld",ans);
+  printf("%lld", ans);
 
   return 0;
 }

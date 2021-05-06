@@ -14,14 +14,15 @@ int main() {
   int n = strlen(a + 1), m = strlen(b + 1);
   for (int i = 1; i <= m; i++)
     h = h * 131 + b[i] - 'A' + 1;
-  //cout << h << endl;
+  // cout << h << endl;
   for (int i = 1; i <= n; i++) {
     f[i] = f[i - 1] * 131 + a[i] - 'A' + 1;
     p[i] = p[i - 1] * 131;
   }
   int ans = 0;
   for (int i = m; i <= n; i++)
-    if(f[i] - f[i - m] * p[m]==h) ++ans;
+    if (f[i] - f[i - m] * p[m] == h)
+      ++ans;
   cout << ans;
   return 0;
 }

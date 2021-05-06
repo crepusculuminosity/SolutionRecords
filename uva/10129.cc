@@ -5,7 +5,7 @@ using namespace std;
 
 const int maxn = 30;
 
-//string w;
+// string w;
 char w[1010];
 int n, start;
 /*G 邻接矩阵存图，in，out记录入度和出度*/

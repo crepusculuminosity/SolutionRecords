@@ -8,9 +8,12 @@ const int maxn = 1e4 + 10;
 int num[maxn], prime[maxn], vis[maxn];
 
 inline int read() {
-  int x=0; char ch = getchar();
-  while (ch < '0' || ch > '9') ch=getchar();
-  while(ch>='0' && ch <= '9') x=(x << 1) + (x << 3)+ch-48,ch=getchar();
+  int x = 0;
+  char ch = getchar();
+  while (ch < '0' || ch > '9')
+    ch = getchar();
+  while (ch >= '0' && ch <= '9')
+    x = (x << 1) + (x << 3) + ch - 48, ch = getchar();
   return x;
 }
 
@@ -41,18 +44,20 @@ struct node {
 };
 
 int bfs(int a, int b) {
-  memset(vis,0,sizeof(vis));
+  memset(vis, 0, sizeof(vis));
   queue<node> q;
-  q.push(node{a,0});
-  vis[a]=1;
-  while(!q.empty()) {
-    node now=q.front(); q.pop();
-    if(now.x==b) return now.s;
+  q.push(node{a, 0});
+  vis[a] = 1;
+  while (!q.empty()) {
+    node now = q.front();
+    q.pop();
+    if (now.x == b)
+      return now.s;
 
-    for(int i=1;i<=cnt;i++) {
-      if(check(prime[i],now.x)&&!vis[prime[i]]) {
-        q.push(node{prime[i],now.s+1});
-        vis[prime[i]]=1;
+    for (int i = 1; i <= cnt; i++) {
+      if (check(prime[i], now.x) && !vis[prime[i]]) {
+        q.push(node{prime[i], now.s + 1});
+        vis[prime[i]] = 1;
       }
     }
   }
@@ -61,14 +66,16 @@ int bfs(int a, int b) {
 
 int main() {
   init();
-  //freopen("data.in", "r", stdin);
-  //freopen("data.out", "w", stdout);
-  int _=read();
-  while(_--) {
-    int a=read(), b = read();
-    int ans=bfs(a,b);
-    if(ans==-1) printf("Impossible\n");
-    else printf("%d\n",ans);
+  // freopen("data.in", "r", stdin);
+  // freopen("data.out", "w", stdout);
+  int _ = read();
+  while (_--) {
+    int a = read(), b = read();
+    int ans = bfs(a, b);
+    if (ans == -1)
+      printf("Impossible\n");
+    else
+      printf("%d\n", ans);
   }
   return 0;
 }

@@ -24,9 +24,8 @@ int main() {
   while (_--) {
     cin >> x >> y;
     ll a = 1, b = 1;
-    ll x=min(x,y),y=x+y
-    for (int i = 1; i <= x; i++)
-      a = a * (a + 1) % mod;
+    ll x = min(x, y),
+       y = x + y for (int i = 1; i <= x; i++) a = a * (a + 1) % mod;
     for (int i = 1; i <= y; i++)
       b = b * (b + 1) % mod;
     cout << max(a, b) * qsm(min(a, b), mod - 2) % mod << '\n';

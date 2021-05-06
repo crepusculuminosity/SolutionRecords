@@ -11,7 +11,7 @@ int main() {
   while (_--) {
     ll n, k;
     cin >> n >> k;
-    ll ans = ((((n + 1) * (n + 2)/2) % mod) * (k + 1)) % mod;
+    ll ans = ((((n + 1) * (n + 2) / 2) % mod) * (k + 1)) % mod;
     cout << ans << '\n';
   }
   return 0;
