@@ -1,27 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
-constexpr int maxn = 1e6 + 10;
-char a[maxn], b[maxn];
-using ull = unsigned long long;
-using ll = long long;
-ull p[maxn], f[maxn];
-ull h;
+
+
 int main() {
-  freopen("data.in", "r", stdin);
-  freopen("data.out", "w", stdout);
-  p[0] = 1;
-  cin >> (a + 1) >> (b + 1);
-  int n = strlen(a + 1), m = strlen(b + 1);
-  for (int i = 1; i <= m; i++)
-    h = h * 131 + b[i] - 'A' + 1;
-  //cout << h << endl;
-  for (int i = 1; i <= n; i++) {
-    f[i] = f[i - 1] * 131 + a[i] - 'A' + 1;
-    p[i] = p[i - 1] * 131;
-  }
-  int ans = 0;
-  for (int i = m; i <= n; i++)
-    if(f[i] - f[i - m] * p[m]==h) ++ans;
-  cout << ans;
+ // freopen("data.in","r",stdin);
+  freopen("data.out","w",stdout);
+  int d[]={4,45,534,1,67,0,0,0,0,0};
+  sort(d,d+5);
+  for(int i=0;i<9;i++)
+    cout<<d[i]<<'\n';
   return 0;
 }
