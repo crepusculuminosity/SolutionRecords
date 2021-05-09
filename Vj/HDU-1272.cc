@@ -1,27 +1,23 @@
-#include <bits/stdc++.h>
+#include <cstdio>
+#include <cstring>
+#include <iostream>
 using namespace std;
-constexpr int maxn = 100000 + 10;
-bool f;
-int fa[maxn], rnk[maxn];
-int vis[maxn];
+const int maxn = 100000 + 10;
+int fa[maxn], rnk[maxn], cnt[maxn];
+int a, b;
 void init() {
-  f = 1;
   for (int i = 1; i < maxn; i++)
-    fa[i] = i, rnk[i] = 0;
+    fa[i] = i, rnk[i] = 0, cnt[i] = 0;
 }
 int find(int x) {
-  while (fa[x] != x)
-    x = fa[x];
-  return x;
-} //递归可能会爆栈
+  if (fa[x] == x)
+    return x;
+  return fa[x] = find(fa[x]);
+}
 void merge(int x, int y) {
-  x = find(x);
-  y = find(y);
-  if (x == y) {
-    f = 0;
+  x = find(x), y = find(y);
+  if (x == y)
     return;
-  }
-  // fa[x]=y;
   if (rnk[x] < rnk[y])
     fa[x] = y;
   else {
@@ -31,49 +27,35 @@ void merge(int x, int y) {
   }
 }
 int main() {
-  // freopen("data.in", "r", stdin);
-  int m, n;
-  set<int> s;
-  while (cin >> n >> m && ~n) {
+  // freopen("data.in","r",stdin);
+  init();
+
+  while (1) {
     init();
-    int sum = 1;
-    if (n == 0 && m == 0) {
-      cout << "Yes" << '\n';
-      continue;
-    }
-    if (n == -1 && m == -1)
-      break;
-    // s.insert(n),s.insert(m);
-    m = find(m), n = find(n);
-    if (m == n)
-      f = 0;
-    else
-      merge(n, m);
-    vis[n] = vis[m] = 1;
-    cout << find(m) << ' ' << find(n) << endl;
-    while (1) {
-      cin >> n >> m;
-      if (n == 0 && m == 0)
+    bool f = 1;
+    int x = 0, y = 0;
+    while (cin >> a >> b) {
+      if (a == -1 && b == -1)
+        return 0;
+      if (a == 0 && b == 0)
         break;
-      n = find(n), m = find(m);
-      if (n == m)
+      if (!cnt[a])
+        ++cnt[a], ++x;
+      if (!cnt[b])
+        ++cnt[b], ++x;
+      if (find(a) == find(b))
         f = 0;
-      else
-        merge(n, m), vis[n] = vis[m] = 1;
+      else {
+        merge(a, b);
+        ++y;
+      }
     }
-    /*for(int i = 1; i < maxn; i++)
-  if(vis[i]) cout<<find(i)<<' ';
-cout<<endl;*/
-    if (f) {
-      for (int i = 1; i < maxn; i++)
-        if (vis[i])
-          s.insert(find(i));
-      if (s.size() == 2)
-        cout << "Yes" << '\n';
-      else
-        cout << "No" << '\n';
-    } else
-      cout << "No" << '\n';
+    if (x == 0 && y == 0)
+      cout << "Yes\n";
+    else if (f && y == x - 1)
+      cout << "Yes\n";
+    else
+      cout << "No\n";
   }
   return 0;
 }

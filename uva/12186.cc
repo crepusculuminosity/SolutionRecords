@@ -4,6 +4,15 @@ int n, m;
 constexpr int maxn = 1e5 + 10;
 vector<int> G[maxn];
 int dp[maxn];
+
+inline bool read(int& x) {
+  x=0;
+  char ch = getchar();
+  while (ch < '0' || ch > '9') ch=getchar();
+  while(ch >= '0' && ch <= '9') x=(x << 1) + (x << 3)+ch-48,ch=getchar();
+  return 1;
+}
+
 int dfs(int u) {
 
   if (dp[u])
@@ -33,19 +42,18 @@ int main() {
 
   //freopen("data.in", "r", stdin);
   //freopen("data.out", "w", stdout);
-  ios::sync_with_stdio(false);
-  cin.tie(nullptr), cout.tie(nullptr);
-  while (cin >> n >> m && n) {
+  
+  while (read(n)&&read(m) && n) {
     for (int i = 0; i <= n; i++)
       G[i].clear();
     memset(dp, 0, sizeof(dp));
    // memset(d, 0, sizeof(d));
     for (int i = 1; i <= n; i++) {
       int x;
-      cin >> x;
+      read(x);
       G[x].push_back(i);
     }
-    cout << dfs(0) << '\n';
+    printf("%d\n",dfs(0));
 
   }
   return 0;
