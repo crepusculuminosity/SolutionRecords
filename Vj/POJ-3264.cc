@@ -20,8 +20,8 @@ inline void pre() {
     a[i] = a[i / 2] + 1;
 }
 int main() {
-  //freopen("data.in", "r", stdin);
-  //freopen("data.out", "w", stdout);
+  // freopen("data.in", "r", stdin);
+  // freopen("data.out", "w", stdout);
   pre();
   int n = read(), q = read();
   for (int i = 1; i <= n; i++)
@@ -34,7 +34,7 @@ int main() {
 
   while (q--) {
     int l = read(), r = read();
-    int k = a[r- l + 1];
+    int k = a[r - l + 1];
     int maxx = max(st[l][k][0], st[r - (1 << k) + 1][k][0]);
     int minn = min(st[l][k][1], st[r - (1 << k) + 1][k][1]);
     printf("%d\n", maxx - minn);

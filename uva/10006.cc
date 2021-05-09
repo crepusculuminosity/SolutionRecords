@@ -20,18 +20,22 @@ bool check(ll x) {
 }
 
 int main() {
-  //freopen("data.in","r",stdin);
-  //freopen("data.out","w",stdout);
+  // freopen("data.in","r",stdin);
+  // freopen("data.out","w",stdout);
   while (~scanf("%lld", &n) && n) {
     if (check(n)) {
-      bool f=1;
-      for(int x=2;x<n;x++) {
-        f&=(qsm(x,n)==x);
-        if(!f) break;
+      bool f = 1;
+      for (int x = 2; x < n; x++) {
+        f &= (qsm(x, n) == x);
+        if (!f)
+          break;
       }
-      if(f) printf("The number %d is a Carmichael number.\n", n);
-      else printf("%d is normal.\n", n);
-    } else printf("%d is normal.\n", n);
+      if (f)
+        printf("The number %d is a Carmichael number.\n", n);
+      else
+        printf("%d is normal.\n", n);
+    } else
+      printf("%d is normal.\n", n);
   }
   return 0;
 }

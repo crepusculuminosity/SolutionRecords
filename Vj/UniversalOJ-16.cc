@@ -10,7 +10,6 @@ ll ans;
 void dfs(int u) {
 
   for (int i = 0; i < G[u].size(); i++) {
-    
   }
 }
 

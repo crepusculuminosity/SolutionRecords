@@ -7,8 +7,8 @@ using ll = long long;
 ull p[maxn], f[maxn];
 ull h;
 int main() {
- // freopen("data.in", "r", stdin);
-  //freopen("data.out", "w", stdout);
+  // freopen("data.in", "r", stdin);
+  // freopen("data.out", "w", stdout);
   p[0] = 1;
   cin >> (a + 1) >> (b + 1);
   int n = strlen(a + 1), m = strlen(b + 1);

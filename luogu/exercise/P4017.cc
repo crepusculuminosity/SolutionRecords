@@ -7,7 +7,7 @@ int dp[maxn], in[maxn], chu[maxn];
 constexpr int mod = 80112002;
 
 int main() {
-  //freopen("data.in", "r", stdin);
+  // freopen("data.in", "r", stdin);
   ios::sync_with_stdio(false);
   cin.tie(nullptr), cout.tie(nullptr);
   cin >> n >> m;

@@ -46,7 +46,7 @@ int main() {
   while (cin >> (str + 1) && str[1] != 'e') {
     n = strlen(str + 1);
     solve1();
-    //solve2();
+    // solve2();
   }
   return 0;
 }

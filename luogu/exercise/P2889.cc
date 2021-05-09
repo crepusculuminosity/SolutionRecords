@@ -52,8 +52,8 @@ int dfs(int x) {
 }
 
 int main() {
-  //freopen("data.in", "r", stdin);
-  //freopen("data.out", "w", stdout);
+  // freopen("data.in", "r", stdin);
+  // freopen("data.out", "w", stdout);
   // ios::sync_with_stdio(false);
   // cin.tie(0);
   // cout.tie(0);
@@ -79,6 +79,6 @@ int main() {
     if (ans < r)
       ans = r;
   }
-  printf("%d",ans);
+  printf("%d", ans);
   return 0;
 }

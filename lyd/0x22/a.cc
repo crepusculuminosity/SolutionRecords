@@ -22,7 +22,7 @@ void dfs(int u, int x) {
   a[x + 1] = 0;
 }
 int main() {
-  //freopen("data.in","r",stdin);
+  // freopen("data.in","r",stdin);
   cin >> n >> w;
   for (int i = 1; i <= n; i++)
     cin >> c[i];

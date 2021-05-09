@@ -18,8 +18,8 @@ void print(int i, int j) {
   }
 }
 int main() {
-  //freopen("data.in", "r", stdin);
- // freopen("data.out", "w", stdout);
+  // freopen("data.in", "r", stdin);
+  // freopen("data.out", "w", stdout);
   cin >> (a + 1) >> (b + 1);
   int n = strlen(a + 1), m = strlen(b + 1);
   for (int i = 1; i <= n; i++)
@@ -29,7 +29,7 @@ int main() {
       else
         dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
     }
-  //cout << dp[n][m] << endl;
+  // cout << dp[n][m] << endl;
   print(n, m);
   return 0;
 }

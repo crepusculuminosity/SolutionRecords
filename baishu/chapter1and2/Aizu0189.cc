@@ -8,8 +8,8 @@
 #define P pair<int, int>
 using namespace std;
 int n;
-int maxx;         
-int d[Maxn][Maxn]; 
+int maxx;
+int d[Maxn][Maxn];
 void Floyd() {
   for (int k = 0; k <= maxx; k++)
     for (int i = 0; i <= maxx; i++)
@@ -19,9 +19,9 @@ void Floyd() {
 int main() {
   IOS;
   while (cin >> n, n) {
-    MEM(d, INF); 
+    MEM(d, INF);
     for (int i = 0; i <= n; i++)
-      d[i][i] = 0; 
+      d[i][i] = 0;
     maxx = -1;
     while (n--) {
       int a, b, c;
@@ -29,11 +29,10 @@ int main() {
       maxx = max(maxx, max(a, b));
       d[a][b] = d[b][a] = c;
     }
-    Floyd();                        
-    int ans = INF;                  
-    int pos;                        
-    for (int i = 0; i <= maxx; i++) 
-    {
+    Floyd();
+    int ans = INF;
+    int pos;
+    for (int i = 0; i <= maxx; i++) {
       int sum = 0;
       for (int j = 0; j <= maxx; j++)
         sum += d[i][j];

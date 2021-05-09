@@ -19,16 +19,16 @@ inline void print(lll x) {
   putchar(x % 10 + 48);
 }
 
-
 int main() {
-  //freopen("data.in","r",stdin);
+  // freopen("data.in","r",stdin);
   int _;
-  cin>>_;
-  while(_--) {
-    lll ans=0;
-    for(int i=0;i<4;i++) ans+=read();
+  cin >> _;
+  while (_--) {
+    lll ans = 0;
+    for (int i = 0; i < 4; i++)
+      ans += read();
     print(ans);
-    cout<<'\n';
+    cout << '\n';
   }
   return 0;
 }

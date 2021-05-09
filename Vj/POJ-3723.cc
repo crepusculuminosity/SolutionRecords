@@ -61,8 +61,8 @@ int main() {
     N = read(), M = read(), R = read();
     for (int i = 1; i <= R; i++) {
       int u = read(), v = read(), w = read();
-      //es[i].from = u, es[i].to = v + N, es[i].cost = -w;
-      es[i]=edge{u,v+N,-w};
+      // es[i].from = u, es[i].to = v + N, es[i].cost = -w;
+      es[i] = edge{u, v + N, -w};
     }
     // cout<<10000*(N+M)+kruskal()<<'\n';
     printf("%d\n", 10000 * (N + M) + kruskal());

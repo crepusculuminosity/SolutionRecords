@@ -2,8 +2,8 @@
 using namespace std;
 
 int main() {
-  //freopen("data.in", "r", stdin);
-  //freopen("data.out", "w", stdout);
+  // freopen("data.in", "r", stdin);
+  // freopen("data.out", "w", stdout);
   int _;
   cin >> _;
   while (_--) {

@@ -15,7 +15,7 @@ void exgcd(ll a, ll b, ll &d, ll &x, ll &y) {
 }
 
 int main() {
-  exgcd(-21, 225, d, x, y);
+  exgcd(-21, -225, d, x, y);
   printf("%lld %lld %lld", d, x, y);
   return 0;
 }

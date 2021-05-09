@@ -27,9 +27,10 @@ bool merge(int x, int y) {
   return true;
 }
 int kruskal() {
-  int res=0;
-  for(int i=1;i<=m;i++) {
-    if(merge(e[i].from,e[i].to)) res+=e[i].w;
+  int res = 0;
+  for (int i = 1; i <= m; i++) {
+    if (merge(e[i].from, e[i].to))
+      res += e[i].w;
   }
   return res;
 }
@@ -37,10 +38,11 @@ int main() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr), cout.tie(nullptr);
   cin >> n >> m;
-  for(int i=1;i<=n;i++) fa[i]=i;
+  for (int i = 1; i <= n; i++)
+    fa[i] = i;
   for (int i = 1; i <= m; i++)
-    cin>>e[i].from>>e[i].to>>e[i].w;
-  sort(e+1, e + 1 + n);
-  cout<<kruskal();
+    cin >> e[i].from >> e[i].to >> e[i].w;
+  sort(e + 1, e + 1 + n);
+  cout << kruskal();
   return 0;
 }

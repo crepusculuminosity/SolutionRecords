@@ -1,4 +1,3 @@
-#pragma GCC optimize(2)
 #include <bits/stdc++.h>
 using namespace std;
 string s;
@@ -45,7 +44,7 @@ int main() {
   cin.tie(0), cout.tie(0);
   s = "01234567";
   bfs();
-  //freopen("data.in", "r", stdin);
+  // freopen("data.in", "r", stdin);
   while (cin >> s[0] >> s[1] >> s[2] >> s[3] >> s[4] >> s[5] >> s[6] >> s[7]) {
     // bfs();'
     if (s == "01234567")

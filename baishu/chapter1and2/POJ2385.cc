@@ -2,8 +2,7 @@
 #define N 1010
 using namespace std;
 int n, m, f[N][N], a[N], ans;
-int dfs(int k, int s, int t) 
-{
+int dfs(int k, int s, int t) {
   if (t > n)
     return 0; // 时间已经全部过完
   if (f[t][k])

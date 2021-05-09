@@ -42,6 +42,7 @@ inline void spfa(int s) {
 int main(void) {
   freopen("data.in", "r", stdin);
   freopen("data.out", "w", stdout);
+<<<<<<< HEAD
   memset(head, -1, sizeof(head));
   scanf("%d %d", &n, &k);
   while (k--) {
@@ -86,5 +87,22 @@ int main(void) {
   for (int i = 1; i <= n; ++i)
     ans += dis[i];
   printf("%lld\n", ans);
+=======
+  p[0] = 1;
+  cin >> (a + 1) >> (b + 1);
+  int n = strlen(a + 1), m = strlen(b + 1);
+  for (int i = 1; i <= m; i++)
+    h = h * 131 + b[i] - 'A' + 1;
+  // cout << h << endl;
+  for (int i = 1; i <= n; i++) {
+    f[i] = f[i - 1] * 131 + a[i] - 'A' + 1;
+    p[i] = p[i - 1] * 131;
+  }
+  int ans = 0;
+  for (int i = m; i <= n; i++)
+    if (f[i] - f[i - m] * p[m] == h)
+      ++ans;
+  cout << ans;
+>>>>>>> 3877bd7880c6ed0997d87175835e2269005a3cfa
   return 0;
 }

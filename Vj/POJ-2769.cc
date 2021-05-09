@@ -8,8 +8,8 @@ int p[1000010];
 int main() {
   ios::sync_with_stdio(false);
   cin.tie(0), cout.tie(0);
-  ///freopen("data.in", "r", stdin);
-  //freopen("data.out", "w", stdout);
+  /// freopen("data.in", "r", stdin);
+  // freopen("data.out", "w", stdout);
   int _;
   cin >> _;
   while (_--) {

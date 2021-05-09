@@ -19,11 +19,11 @@ void merge(int x, int y) {
 }
 
 int main() {
-  freopen("data.in","r",stdin);
+  freopen("data.in", "r", stdin);
   ios::sync_with_stdio(false);
   cin.tie(nullptr), cout.tie(nullptr);
   for (int i = 1; i <= 30000; i++)
-    fa[i] = i,rnk[i]=1;
+    fa[i] = i, rnk[i] = 1;
   int _;
   cin >> _;
   while (_--) {
@@ -35,7 +35,8 @@ int main() {
     } else {
       if (find(a) != find(b))
         cout << -1 << '\n';
-      else cout << abs(d[a] - d[b]) - 1 << '\n';
+      else
+        cout << abs(d[a] - d[b]) - 1 << '\n';
     }
   }
   return 0;

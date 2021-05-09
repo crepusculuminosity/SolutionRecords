@@ -18,8 +18,8 @@ int main() {
       if (k % d == 0) {
         for (int i = 1; i <= k / d - 2; i++) {
           int j = k / d - 1 - i;
-          //if (j * d <= n)
-            c[k] += a[i * d] * b[j * d];
+          // if (j * d <= n)
+          c[k] += a[i * d] * b[j * d];
         }
       }
     }

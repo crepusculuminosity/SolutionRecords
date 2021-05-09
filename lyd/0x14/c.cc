@@ -10,7 +10,6 @@ void hsh(char *s) {
   for (int i = 1; i <= n; i++)
     h1[i] = h1[i - 1] * 131 + (s[i] - 'a' + 1),
     h2[n - i + 1] = h2[n - i + 2] * 131 + (s[n - i + 1] - 'a' + 1);
-  
 }
 
 int main() {

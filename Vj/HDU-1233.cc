@@ -33,7 +33,7 @@ int kruskal() {
   int res = 0;
   for (int i = 1; i <= n * (n - 1) / 2; i++) {
     if (merge(es[i].from, es[i].to))
-      res +=es[i].w;
+      res += es[i].w;
     // if(++now==n-1) break;
   }
   return res;
@@ -41,8 +41,9 @@ int kruskal() {
 
 int main() {
   ios::sync_with_stdio(false);
-  cin.tie(0); cout.tie(0);
-  //freopen("data.in", "r", stdin);
+  cin.tie(0);
+  cout.tie(0);
+  // freopen("data.in", "r", stdin);
   while (cin >> n && n) {
     for (int i = 1; i <= n * (n - 1) / 2; i++) {
       int u, v, w;

@@ -47,7 +47,7 @@ void print(int x, int y) {
 }
 int main() {
   freopen("data.in", "r", stdin);
-  freopen("data.out","w",stdout);
+  freopen("data.out", "w", stdout);
   ios::sync_with_stdio(false);
   cout.tie(nullptr), cout.tie(nullptr);
   int _;

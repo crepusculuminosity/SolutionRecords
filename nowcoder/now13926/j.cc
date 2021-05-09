@@ -8,8 +8,8 @@ int n, m, k;
 bool vis[55][55][30][30][10];
 struct State {
   int x, y, vx, vy, p, dis;
-  //State(int x, int y, int vx, int vy, int p, int dis)
-   //   : x(x), y(y), vx(vx), vy(vy), p(p), dis(dis) {}
+  // State(int x, int y, int vx, int vy, int p, int dis)
+  //   : x(x), y(y), vx(vx), vy(vy), p(p), dis(dis) {}
   bool end() { return a[x][y] == k + 1 && vx == 0 && vy == 0 && p == k + 1; }
   bool valid() {
     return x >= 0 && y >= 0 && x < n && y < m && a[x][y] >= -1 && vx >= -10 &&
@@ -19,8 +19,8 @@ struct State {
 vector<State> v;
 
 int main() {
-  //freopen("data.in","r",stdin);
-  //freopen("data.out","w",stdout);
+  // freopen("data.in","r",stdin);
+  // freopen("data.out","w",stdout);
   cin >> n >> m >> k;
   int sx, sy;
   char str[60];
@@ -46,8 +46,12 @@ int main() {
       return 0;
     }
     for (int i = 0; i < 9; i++) {
-      State S{v[j].x + v[j].vx + dx[i], v[j].y + v[j].vy + dy[i],
-              v[j].vx + dx[i], v[j].vy + dy[i], v[j].p, v[j].dis + 1};
+      State S{v[j].x + v[j].vx + dx[i],
+              v[j].y + v[j].vy + dy[i],
+              v[j].vx + dx[i],
+              v[j].vy + dy[i],
+              v[j].p,
+              v[j].dis + 1};
       if (S.valid()) {
         if (a[S.x][S.y] == v[j].p + 1)
           ++S.p;

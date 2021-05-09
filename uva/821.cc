@@ -6,6 +6,5 @@ void floyd() {}
 
 int main() {
   while (cin >> a >> b && a) {
-    
   }
 }

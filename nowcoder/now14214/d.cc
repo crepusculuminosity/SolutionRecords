@@ -1,8 +1,8 @@
 #include <algorithm>
 #include <cstdio>
 #include <cstring>
-#include <iostream>
 #include <ctime>
+#include <iostream>
 #define N 100005
 #define M 50
 
@@ -41,7 +41,7 @@ void dfs(int x) {
 }
 
 int main() {
-  clock_t s=clock();
+  clock_t s = clock();
   freopen("data.in", "r", stdin);
   freopen("data.out", "w", stdout);
   scanf("%s", a + 1);
@@ -50,6 +50,6 @@ int main() {
   m = strlen(b + 1);
   dfs(1);
   printf("%d\n", ans);
-  clock_t e=clock();
-  cout<<e-s;
+  clock_t e = clock();
+  cout << e - s;
 }
