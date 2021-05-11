@@ -27,7 +27,7 @@ int main() {
   scanf("%d", &_);
   while (_--) {
     scanf("%d", &n);
-    printf("%lld\n",2 * phi[n] + 3);
+    printf("%d %d %lld\n", kse++, n, 2 * phi[n] + 3);
   }
   return 0;
 }
