@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 namespace IStream {
-constexpr int L = 1 << 30;
+constexpr int L = 1 << 16;
 char buffer[L], *S, *T;
 inline char _getChar() {
   if (S == T) {
