@@ -14,8 +14,17 @@ void exgcd(ll a, ll b, ll &d, ll &x, ll &y) {
   }
 }
 
+ll _exgcd(ll a, ll b, ll &x, ll &y) {
+  if (!b) {
+    x = 1, y = 0;
+    return a;
+  }
+  ll d = _exgcd(b, a % b, y, x);
+  y -= a / b * x;
+  return d;
+}
 int main() {
-  exgcd(-21, -225, d, x, y);
+  _exgcd(-21, -225,x, y);
   printf("%lld %lld %lld", d, x, y);
   return 0;
 }

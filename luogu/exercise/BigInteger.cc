@@ -87,8 +87,12 @@ void BigInteger::clean() {
 }
 
 int main() {
+  // freopen("data.in","r",stdin);
+  ios::sync_with_stdio(false);
+  cin.tie(0), cout.tie(0);
   BigInteger a, b;
   cin >> a >> b;
-  cout << a * b << endl;
+  // a.clean(), b.clean();
+  cout << a * b;
   return 0;
 }
