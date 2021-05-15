@@ -1,46 +1,84 @@
-<<<<<<< HEAD
 #include <bits/stdc++.h>
 using namespace std;
-
-int main() {
-	freopen("data.out","w",stdout);
-  string str("duyangli");
-  for (int i = 1; i <= 20; i++) {
-    random_shuffle(str.begin(), str.end());
-    cout << str << endl << endl;
+using ll = long long;
+constexpr int maxn = 110;
+constexpr int mod = 10000;
+struct Matrix {
+  ll a[maxn][maxn];
+  int n;
+  Matrix(int n) {
+    this->n = n;
+    for (int i = 1; i <= n; i++)
+      a[i][i] = 0;
   }
-=======
-#include <cstdio>
-#include <iostream>
-using namespace std;
-const int maxn = 1010;
-typedef long long ll;
-ll num[maxn], prime[maxn], phi[maxn], cnt;
-
-void init() {
-  for (ll i = 2; i < maxn; i++) {
-    if (num[i] == 0)
-      prime[++cnt] = i, phi[i] = i - 1;
-    for (ll j = 1; j <= cnt && i * prime[j] < maxn; j++) {
-      num[i * prime[j]] = 1;
-      if (i % prime[j] == 0) {
-        phi[i * prime[j]] = phi[i] * prime[j];
-      } else
-        phi[i * prime[j]] = phi[i] * (prime[j] - 1);
+  void clear() {
+    memset(a, 0, sizeof(a));
+    return;
+  }
+  void unit() {
+    clear();
+    for (int i = 1; i <= n; i++)
+      a[i][i] = 1;
+  }
+  friend Matrix operator*(const Matrix &o1, const Matrix &o2) {
+    int n = o1.n;
+    Matrix res(n);
+    res.clear();
+    for (int i = 1; i <= n; i++)
+      for (int j = 1; j <= n; j++)
+        for (int k = 1; k <= n; k++) {
+          res.a[i][j] = (res.a[i][j] + o1.a[i][k] * o2.a[k][j]) % mod;
+        }
+    return res;
+  }
+  friend Matrix operator+(const Matrix &o1, const Matrix &o2) {
+    int n = o1.n;
+    Matrix res(n);
+    for (int i = 1; i <= n; i++)
+      for (int j = 1; j <= n; j++)
+        res.a[i][j] = (o1.a[i][j] + o2.a[i][j]) % mod;
+    return res;
+  }
+  void print() {
+    for (int i = 1; i <= n; i++) {
+      for (int j = 1; j <= n; j++)
+        cout << a[i][j] << ' ';
+      cout << '\n';
     }
   }
-  for (int i = 2; i < maxn; i++)
-    phi[i] += phi[i - 1];
-}
-
-int main() {
-  init();
-  int n, _, kse = 1;
-  scanf("%d", &_);
-  while (_--) {
-    scanf("%d", &n);
-    printf("%lld\n",2 * phi[n] + 3);
+  void scan() {
+    for (int i = 1; i <= n; i++)
+      for (int j = 1; j <= n; j++)
+        cin >> a[i][j];
   }
->>>>>>> a38629649c137185788b2450279023954ff3301e
+};
+
+inline Matrix ksm(Matrix &o, ll k) {
+  Matrix res(o.n);
+  res.unit();
+  while (k) {
+    if (k & 1)
+      res = (res * o);
+    o = o * o;
+    k >>= 1;
+  }
+  return res;
+}
+ll n;
+ll k;
+int main() {
+  freopen("data.in", "r", stdin);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr), cout.tie(nullptr);
+  cin >> n;
+  if (n <= 2) {
+    cout << "1";
+    return 0;
+  }
+  Matrix res(2);
+  res.a[1][1] = 1, res.a[1][2] = 1, res.a[2][1] = 1, res.a[2][2] = 0;
+  // res.scan();
+  res = ksm(res, n);
+  cout << res.a[2][1] % mod;
   return 0;
 }

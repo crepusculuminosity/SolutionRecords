@@ -1,8 +1,9 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <cstring>
 using namespace std;
-using ll = long long;
-constexpr int maxn = 110;
-constexpr int mod = 1e9 + 7;
+typedef long long ll;
+const int maxn = 110;
+const int mod = 10000;
 struct Matrix {
   ll a[maxn][maxn];
   int n;
@@ -66,27 +67,16 @@ inline Matrix ksm(Matrix &o, ll k) {
 }
 ll n;
 int main() {
-  //freopen("data.in", "r", stdin);
-  //freopen("data.out","w",stdout);
+  freopen("data.in", "r", stdin);
   ios::sync_with_stdio(false);
-  cin.tie(nullptr), cout.tie(nullptr);
-  int _;
-  cin >> _;
-  while (_--) {
-    int ans = 0;
-    int n;
-    cin >> n;
-    if (n <= 3)
-      cout << "1\n";
-    else {
-      Matrix res(3);
-      //res.clear();
-      //res.print();
-      res.a[1][1] = res.a[1][3] = res.a[2][1] = res.a[3][2] = 1;
-      res = ksm(res, n - 3);
-      res.print();
-      cout<<'\n';
-    }
+  cin.tie(0), cout.tie(0);
+  Matrix res(2);
+  //r.a[2][2] = r.a[1][2] = r.a[2][1] = 1, r.a[1][1] = 0;
+  while (cin >> n && ~n) {
+    res.a[1][1] = 0, res.a[1][2] = 1, res.a[2][1] = 1, res.a[2][2] = 1;
+  // res.scan();
+    res = ksm(res, n);
+    cout << res.a[2][1] <<'\n';
   }
   return 0;
 }
