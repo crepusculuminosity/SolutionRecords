@@ -1,93 +1,80 @@
-#include <algorithm>
-#include <cmath>
 #include <cstdio>
 #include <cstring>
 #include <iostream>
 #include <queue>
 #include <vector>
 using namespace std;
-const int N = 1e3 + 10, M = 1e4 + 10;
-struct Node {
-  int to, next, dis;
-} edge[M << 1];
-int head[N], tot;
-int n, ml, md, d[N], v[N], cnt[N];
-bool SPFA(int s);
-int read();
-void write(int x);
-void add(int from, int to, int dis);
-int main() {
-  n = read(), ml = read(), md = read();
-  for (int i = 1; i <= ml; i++) {
-    int a = read(), b = read(), d = read();
-    add(a, b, d);
-  }
-  for (int i = 1; i <= md; i++) {
-    int a = read(), b = read(), d = read();
-    add(b, a, -d);
-  }
-  for (int i = 1; i <= n - 1; i++)
-    add(i + 1, i, 0);
-  for (int i = 1; i <= n; i++)
-    add(0, i, 0);
-  if (SPFA(0))
-    cout << -1 << endl;
-  else if (!SPFA(1) && d[n] == 0x3f3f3f3f)
-    cout << -2 << endl;
-  else
-    cout << d[n] << endl;
-  return 0;
+inline int read() {
+  int x = 0;
+  char ch = getchar();
+  while (ch < '0' || ch > '9')
+    ch = getchar();
+  while (ch >= '0' && ch <= '9')
+    x = (x << 1) + (x << 3) + ch - 48, ch = getchar();
+  return x;
 }
+const int maxn = 1010;
+struct node {
+  int to, w;
+};
+vector<node> G[maxn];
+inline void add(int u, int v, int w) { G[u].push_back(node{v, w}); }
+int n, ML, MD;
+int d[maxn], vis[maxn], num[maxn];
+const int INF = 0x3f3f3f3f;
+
 bool SPFA(int s) {
   memset(d, 0x3f, sizeof(d));
-  memset(v, 0, sizeof(v));
-  memset(cnt, 0, sizeof(cnt));
+  memset(vis, 0, sizeof(vis));
+  memset(num, 0, sizeof(num));
+  d[s] = 0, vis[s] = 1, num[s] = 1;
   queue<int> q;
   q.push(s);
-  d[s] = 0, v[s] = 1;
   while (!q.empty()) {
-    int x = q.front();
+    int u = q.front();
     q.pop();
-    v[x] = 0;
-    for (int i = head[x]; i; i = edge[i].next) {
-      int y = edge[i].to;
-      if (d[y] > d[x] + edge[i].dis) {
-        d[y] = d[x] + edge[i].dis;
-        cnt[y] = cnt[x] + 1;
-        if (cnt[y] >= n + 1)
-          return true;
-        if (!v[y])
-          q.push(y), v[y] = 1;
+    vis[u] = 0;
+    for (int i = 0; i < G[u].size(); i++) {
+      node &e = G[u][i];
+      if (d[e.to] > d[u] + e.w) {
+        d[e.to] = d[u] + e.w;
+        if (!vis[e.to]) {
+          q.push(e.to);
+          vis[e.to] = 1;
+          num[e.to]++;
+          if (num[e.to] == n + 1)
+            return 0;
+        }
       }
     }
   }
-  return false;
+  return 1;
 }
-void add(int from, int to, int dis) {
-  tot++;
-  edge[tot].to = to;
-  edge[tot].dis = dis;
-  edge[tot].next = head[from];
-  head[from] = tot;
-}
-int read() {
-  int x = 0, f = 1;
-  char ch = getchar();
-  while (ch < '0' || ch > '9') {
-    if (ch == '-')
-      f = -1;
-    ch = getchar();
+
+int main() {
+  // freopen("data.in", "r", stdin);
+  // freopen("data.out", "w", stdout);
+  n = read(), ML = read(), MD = read();
+  for (int i = 1; i <= ML; i++) {
+    int a = read(), b = read(), c = read();
+    add(a, b, c);
   }
-  while (ch >= '0' && ch <= '9') {
-    x = (x << 1) + (x << 3) + (ch ^ 48);
-    ch = getchar();
+  for (int i = 1; i <= MD; i++) {
+    int a = read(), b = read(), c = read();
+    add(b, a, -c);
   }
-  return x * f;
-}
-void write(int x) {
-  if (x < 0)
-    putchar('-'), x = -x;
-  if (x > 9)
-    write(x / 10);
-  putchar(x % 10 + '0');
+  for (int i = 1; i < n; i++)
+    add(i + 1, i, 0);
+  for (int i = 1; i <= n; i++)
+    add(0, i, 0);
+  if (!SPFA(0))
+    puts("-1");
+  else {
+    SPFA(1);
+    if (d[n] == INF)
+      puts("-2");
+    else
+      printf("%d", d[n]);
+  }
+  return 0;
 }

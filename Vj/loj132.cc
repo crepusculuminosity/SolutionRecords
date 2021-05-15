@@ -47,20 +47,16 @@ ll query(ll x) {
 }
 
 int main() {
-  // freopen("data.in","r",stdin);
+  //freopen("data.in","r",stdin);
+  //freopen("data.out","w",stdout);
   n = read(), m = read();
   ll now = 0;
   for (ll i = 1; i <= n; i++) {
     ll x = read();
     a[i] = x - now;
     now = x;
-    /* ll x=read();
-update(i,x-now);
-now=x;*/
   }
   init();
-  // for(int i=1;i<=n;i++) printf("%lld ",tr2[i]);
-  // puts("");
   while (m--) {
     ll op = read(), l = read(), r = read();
     if (op == 1) {
