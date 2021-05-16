@@ -2,12 +2,34 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-constexpr int maxn = 5e5 + 10;
-ll tr[maxn], ran[maxn], n;
-ll ans;
-
-inline ll read() {
-  ll x = 0, f = 1;
+constexpr int maxn = 3e4 + 10;
+int m, n, a[maxn], s[maxn], tr[maxn];
+int c[maxn], d[maxn];
+inline int discrete(int v) { return lower_bound(s + 1, s + 1 + m, v) - s; }
+void update(int x, int k) {
+  while (x < maxn) {
+    tr[x] += k;
+    x += lb(x);
+  }
+}
+int query(int x) {
+  int res = 0;
+  while (x) {
+    res += tr[x];
+    x -= lb(x);
+  }
+  return res;
+}
+struct point {
+  int num, val;
+  bool operator<(const point &x) const {
+    if (val == x.val)
+      return num < x.num;
+    return val < x.val;
+  }
+} q[maxn];
+inline int read() {
+  int x = 0, f = 1;
   char c = getchar();
   while (c < '0' || c > '9') {
     if (c == '-')
@@ -20,43 +42,28 @@ inline ll read() {
   }
   return x * f;
 }
-
-struct point {
-  ll num, val;
-  bool operator<(const point &x) const {
-    if (val == x.val)
-      return num < x.num;
-    return val < x.val;
-  }
-} q[maxn];
-
-inline void update(ll x, ll k) {
-  while (x <= n) {
-    tr[x] += k;
-    x += lb(x);
-  }
-}
-
-inline ll query(ll x) {
-  ll res = 0;
-  while (x >= 1) {
-    res += tr[x];
-    x -= lb(x);
-  }
-  return res;
-}
-
 int main() {
+  freopen("data.in", "r", stdin);
   n = read();
   for (int i = 1; i <= n; i++)
     q[i].val = read(), q[i].num = i;
   sort(q + 1, q + 1 + n);
   for (int i = 1; i <= n; i++)
-    ran[q[i].num] = i;
+    s[q[i].num] = i;
   for (int i = 1; i <= n; i++) {
-    update(ran[i], 1);
-    ans += i - query(ran[i]);
+    update(s[i], 1);
+    c[i] = query(s[i]) - 1;
   }
-  printf("%lld", ans);
+  memset(tr, 0, sizeof(tr));
+  for (int i = n; i >= 1; i--) {
+    update(s[i], 1);
+    d[i] = n - i - query(s[i]) + 1;
+  }
+  int ans = 0;
+  for (int i = 1; i <= n; i++) {
+    // cout << c[i] << ' ' << n - i - d[i] << endl;
+    ans += c[i] * d[i];
+  }
+  cout << ans;
   return 0;
 }

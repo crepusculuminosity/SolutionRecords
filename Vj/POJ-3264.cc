@@ -11,7 +11,7 @@ inline int read() {
   while (ch < '0' || ch > '9')
     ch = getchar();
   while (ch >= '0' && ch <= '9')
-    x = x * 10 + ch - 48, ch = getchar();
+    x = (x<<1)+(x<<3) + ch - 48, ch = getchar();
   return x;
 }
 inline void pre() {
@@ -26,7 +26,7 @@ int main() {
   int n = read(), q = read();
   for (int i = 1; i <= n; i++)
     st[i][0][0] = read(), st[i][0][1] = st[i][0][0];
-  for (int j = 1; j <= 19; j++)
+  for (int j = 1; j <= 17; j++)
     for (int i = 1; i + (1 << j) - 1 <= n; i++) {
       st[i][j][0] = max(st[i][j - 1][0], st[i + (1 << j - 1)][j - 1][0]);
       st[i][j][1] = min(st[i][j - 1][1], st[i + (1 << j - 1)][j - 1][1]);
