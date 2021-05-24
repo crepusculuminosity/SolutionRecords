@@ -1,70 +1,72 @@
-#define lb(x) ((x) & (-x))
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-const int maxn = 5e4 + 10;
-ll m, n;
-ll a[maxn], tr[maxn];
-char str[10];
-inline ll read() {
-  ll x = 0, f = 1;
-  char ch = getchar();
-  while (ch < '0' || ch > '9') {
-    if (ch == '-')
-      f = -1;
-    ch = getchar();
+constexpr int maxn = 50000 + 10;
+int a[maxn];
+struct tree {
+  int l, r, sum;
+} t[maxn << 2];
+inline void pushup(int p) { t[p].sum = t[p << 1].sum + t[p << 1 | 1].sum; }
+inline void build(int p, int l, int r) {
+  t[p].l = l, t[p].r = r;
+  if (l == r) {
+    t[p].sum = a[l];
+    return;
   }
-  while (ch >= '0' && ch <= '9') {
-    x = x * 10 + ch - '0';
-    ch = getchar();
-  }
-  return x * f;
+  int mid = l + r >> 1;
+  build(p << 1, l, mid);
+  build(p << 1 | 1, mid + 1, r);
+  pushup(p);
 }
-
-inline void init() {
-  for (ll i = 1; i <= n; i++) {
-    tr[i] += a[i];
-    ll j = i + lb(i);
-    if (j <= n)
-      tr[j] += tr[i];
+inline void update(int p, int x, int v) {
+  if (t[p].l == t[p].r) {
+    t[p].sum += v;
+    return;
   }
+  int mid = t[p].l + t[p].r >> 1;
+  if (x <= mid)
+    update(p << 1, x, v);
+  else
+    update(p << 1 | 1, x, v);
+  pushup(p);
 }
-
-inline void update(ll x, ll k) {
-  while (x <= n) {
-    tr[x] += k;
-    x += lb(x);
-  }
-}
-
-inline ll query(ll x) {
-  ll ans = 0;
-  while (x >= 1) {
-    ans += tr[x];
-    x -= lb(x);
-  }
+inline int query(int p, int l, int r) {
+  if (l <= t[p].l && r >= t[p].r)
+    return t[p].sum;
+  int mid = t[p].l + t[p].r >> 1;
+  int ans = 0;
+  if (l <= mid)
+    ans += query(p << 1, l, r);
+  if (r > mid)
+    ans += query(p << 1 | 1, l, r);
   return ans;
 }
 
+int n, m;
 int main() {
-  // freopen("data.in","r",stdin);
-  ll Kase = read();
-  for (int kase = 1; kase <= Kase; kase++) {
-    printf("Case %d:\n", kase);
-    memset(a, 0, sizeof(a));
-    memset(tr, 0, sizeof(tr));
-    n = read();
+
+  //freopen("data.in", "r", stdin);
+  //freopen("data.out", "w", stdout);
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr), cout.tie(nullptr);
+  int _, kse = 1;
+  cin >> _;
+  while (_--) {
+    // memset(t,0,sizeof(t));
+    cout << "Case " << kse++ << ":\n";
+    cin >> n;
     for (int i = 1; i <= n; i++)
-      a[i] = read();
-    init();
-    while (scanf("%s", str) && str[0] != 'E') {
-      ll x = read(), y = read();
-      if (str[0] == 'Q')
-        printf("%lld\n", query(y) - query(x - 1));
-      if (str[0] == 'A')
-        update(x, y);
-      if (str[0] == 'S')
-        update(x, -y);
+      cin >> a[i];
+    build(1, 1, n);
+    char ch[10];
+    while (cin >> ch && ch[0] != 'E') {
+      int a, b;
+      cin >> a >> b;
+      if (ch[0] == 'Q')
+        cout << query(1, a, b) << '\n';
+      if (ch[0] == 'A')
+        update(1, a, b);
+      if (ch[0] == 'S')
+        update(1, a, -b);
     }
   }
   return 0;

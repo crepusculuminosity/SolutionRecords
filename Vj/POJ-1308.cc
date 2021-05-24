@@ -27,7 +27,9 @@ void merge(int x, int y) {
   }
 }
 int main() {
-  // freopen("data.in","r",stdin);
+  ios::sync_with_stdio(false);
+  cin.tie(0),cout.tie(0);
+  //freopen("data.in","r",stdin);
   // init();
   int kse = 1;
   while (1) {
