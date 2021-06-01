@@ -1,60 +1,72 @@
-#include <bits/stdc++.h>
-#define u32 unsigned
-#define i64 long long
-#define u64 unsigned long long
-#define f80 long double
+#include <iostream>
+#include <cstring>
+#include <cstdio>
+#include <vector>
 using namespace std;
-#define MAXN 55
-
-clock_t __t_bg, __t_ed;
-
-int N, M, all;
-int fa[MAXN];
-typedef vector<int> vc;
-vc v;
-map<vc, double> mp;
-
-int find(int x) { return fa[x] > 0 ? fa[x] = find(fa[x]) : x; }
-inline void merge(int x, int y) {
-  x = find(x), y = find(y);
-  if (x != y)
-    fa[x] < fa[y] ? swap(x, y), 1 : 1, fa[y] += fa[x], fa[x] = y;
+const int maxn=1e5+10;
+int d[maxn],tot=1,trie[maxn*31][2],n; 
+void insert(int n) {
+	int p=1;
+	for(int i=31;i>=0;i--) {
+		int ch=(n>>i)&1;
+		if(trie[p][ch]==0) trie[p][ch]=++tot;
+		p=trie[p][ch];
+	}
+}
+int query(int n) {
+	int ans=0,p=1;
+	for(int i=31;i>=0;i--) {
+		int ch=(n>>i)&1, oh=ch^1;
+		if(trie[p][oh]) p=trie[p][oh],ans=ans<<1|1;
+		else p=trie[p][ch],ans<<=1;
+	}
+	return ans;
+}
+struct node {
+	int to,w;
+};
+vector<node> G[maxn];
+inline void add(int u, int v, int w) {
+	G[u].push_back(node{v,w});
+}
+inline int read() {
+	int x=0;
+	char ch=getchar();
+	while(ch<'0'||ch>'9') ch=getchar();
+	while(ch>='0'&&ch<='9') x=(x<<1)+(x<<3)+ch-48,ch=getchar();
+	return x;
+}
+void dfs(int u, int fa) {
+	//d[u]=0;
+	for(int i=0;i<G[u].size();i++) {
+		node& e=G[u][i];
+		if(e.to==fa) continue;
+		d[e.to]=d[u]^e.w;
+		dfs(e.to,u);
+	}
+}
+int main() {
+//freopen("data.in","r",stdin);
+	
+	while(~scanf("%d",&n)) {
+		memset(trie,0,sizeof(trie));
+		memset(d,0,sizeof(d));
+		tot=1;
+		for(int i=0;i<=n;i++) G[i].clear();
+		for(int i=1;i<=n-1;i++) {
+		int u=read(),v=read(),w=read();
+		add(u+1,v+1,w);
+		add(v+1,u+1,w);
+	}
+	dfs(1,0);
+	int ans=0;
+	for(int i=1;i<=n;i++) {
+		ans=max(ans,query(d[i]));
+		insert(d[i]); 
+	} 
+	printf("%d\n",ans);
+	}
+	 
+	return 0;
 }
 
-double DP(vc c) {
-  if (mp.count(c))
-    return mp[c];
-  int s(c.size()), ts(0);
-  if (s == 1)
-    return mp[c] = 0;
-  for ( int i = 0; i < s; ++i)
-    ts += c[i] * (c[i] - 1) / 2;
-  double p(1. * all / (all - ts));
-  for ( int i = 1; i < s; ++i)
-    for ( int j = 0; j < i; ++j) {
-      vc t(c);
-      t[j] += t[i], swap(t[i], t[s - 1]), t.pop_back(),
-          sort(t.begin(), t.end());
-      p += 1. * c[i] * c[j] / (all - ts) * DP(t);
-    }
-  return mp[c] = p;
-}
-
-signed main() {
-  freopen("data.in", "r", stdin);
-  freopen("data.out", "w", stdout);
-  __t_bg = clock();
-  while (~scanf("%d%d", &N, &M)) {
-    memset(fa, -1, sizeof fa), all = N * (N - 1) / 2;
-    for ( int i = 1, x, y; i <= M; ++i)
-      scanf("%d%d", &x, &y), merge(x, y);
-    v.clear();
-    for ( int i = 1; i <= N; ++i)
-      if (fa[i] < 0)
-        v.push_back(-fa[i]);
-    printf("%.6lf\n", DP(v));
-  }
-  __t_ed = clock(),
-  fprintf(stderr, "time: %.5lfs\n", double(__t_ed - __t_bg) / CLOCKS_PER_SEC);
-  return 0;
-}
