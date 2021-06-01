@@ -1,34 +1,49 @@
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <cstdio>
+#include <cstring>
+#include <iostream>
+#include <vector>
 using namespace std;
-constexpr int maxn = 1510;
+const int maxn = 1550;
 vector<int> G[maxn];
+inline void add(int u, int v) { G[u].push_back(v); }
 int n;
-char ch[100];
-int dp[maxn][maxn];
-int dfs(int u, int o) {
-  if (~dp[u][o])
-    return dp[u][o];
-  int &res = dp[u][o] = 0;
-  if (o == 0) {
-    for (int i = 0; i < G[u].size(); i++)
+int dp[maxn][2], in[maxn];
+
+void dfs(int u, int fa) {
+  dp[u][1] = 1, dp[u][0] = 0;
+  for (int i = 0; i < G[u].size(); i++) {
+    int v = G[u][i];
+    if (v == fa)
+      continue;
+    dfs(v, u);
+    dp[u][0] += dp[v][1];
+    dp[u][1] += min(dp[v][0], dp[v][1]);
   }
 }
 int main() {
-  freopen("data.in", "r", stdin);
-  freopen("data.out", "w", stdout);
-  while (scanf("%d", &n) != EOF) {
-    memset(dp, -1, sizeof(dp));
-    for (int i = 0; i < maxn; i++)
+  //freopen("data.in", "r", stdin);
+  //freopen("data.out", "w", stdout);
+  while (~scanf("%d", &n)) {
+    for (int i = 0; i < n; i++)
       G[i].clear();
-    int a, b, c;
-    for (int i = 1; i <= n; i++) {
+    for (int i = 0; i < n; i++) {
+      int a, b;
       scanf("%d:(%d)", &a, &b);
-      ++a;
-      for (int j = 1; j <= b; j++) {
+      for (int i = 1; i <= b; i++) {
+        int c;
         scanf("%d", &c);
-        G[a].push_back(c);
+        in[c]++;
+        add(a, c);
+        add(c, a);
       }
     }
+    int root;
+    for (int i = 0; i < n; i++)
+      if (!in[i])
+        root = i;
+    dfs(root, -1);
+    printf("%d\n", min(dp[root][0], dp[root][1]));
   }
   return 0;
 }

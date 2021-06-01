@@ -45,7 +45,7 @@ int main() {
     sum += a[i];
   }
   for (int i = 1; i < n; i++) {
-    ll u, v, w;
+    int u, v, w;
     cin >> u >> v >> w;
     add(u, v, w);
     add(v, u, w);
@@ -53,7 +53,7 @@ int main() {
   dfs(1, 0);
   f[1] = d[1];
   dfs2(1, 0);
-  ll ans = 0x7f7f7f7f7f7f7f7f;
+  ll ans = 0x3f3f3f3f3f3f3f3f;
   for (int i = 1; i <= n; i++)
     ans = min(ans, f[i]);
   cout << ans;
