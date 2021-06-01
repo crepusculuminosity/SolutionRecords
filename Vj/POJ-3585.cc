@@ -5,9 +5,8 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-const int maxn = 300000 + 10;
-typedef long long ll;
-ll d[maxn], f[maxn];
+const int maxn = 200000 + 10;
+int d[maxn], f[maxn];
 int n;
 struct node {
   int to;
@@ -31,7 +30,7 @@ void dfs(int u, int fa) {
       if (G[e.to].size() == 1)
         d[u] += e.w;
       else
-        d[u] += _min(d[e.to], (ll)e.w);
+        d[u] += _min(d[e.to], (int)e.w);
     }
   }
 }
@@ -43,14 +42,14 @@ void DFS(int u, int fa) {
       if (G[u].size() == 1)
         f[e.to] = d[e.to] + e.w;
       else
-        f[e.to] = d[e.to] + _min(f[u] - _min(d[e.to], (ll)e.w), (ll)e.w);
+        f[e.to] = d[e.to] + _min(f[u] - _min(d[e.to], (int)e.w), (int)e.w);
       DFS(e.to, u);
     }
   }
 }
 int main() {
-  freopen("data.in", "r", stdin);
-  freopen("data.out", "w", stdout);
+  //freopen("data.in", "r", stdin);
+  //freopen("data.out", "w", stdout);
   int _;
   scanf("%d", &_);
   while (_--) {
@@ -65,10 +64,10 @@ int main() {
     dfs(1, 0);
     f[1] = d[1];
     DFS(1, 0);
-    ll ans = -1;
+    int ans = -1;
     for (int i = 1; i <= n; i++)
       ans = _max(ans, f[i]);
-    printf("%lld\n", ans);
+    printf("%d\n", ans);
   }
   return 0;
 }
